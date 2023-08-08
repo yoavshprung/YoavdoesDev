@@ -1,0 +1,20 @@
+# Use the official Python image as the base
+FROM python:3.10.12
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the contents of the "YoavdoesDev" directory from your local machine to the container's /app directory
+COPY YoavdoesDev /app/YoavdoesDev
+
+# Install Flask and any other dependencies using pip
+RUN pip install Flask==2.0.1
+
+# Expose the port that your Flask app will run on
+EXPOSE 5000
+
+# Set the environment variable to tell Flask where to find your app
+ENV FLASK_APP=YoavdoesDev/app.py
+
+# Command to run your Flask app
+CMD ["flask", "run", "--host=0.0.0.0"]
